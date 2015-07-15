@@ -1,0 +1,70 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://tpox-benchmark.com/custacc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Account">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:byte" name="Category"/>
+        <xs:element type="xs:string" name="AccountTitle"/>
+        <xs:element type="xs:string" name="ShortTitle"/>
+        <xs:element type="xs:string" name="Mnemonic"/>
+        <xs:element type="xs:string" name="Currency"/>
+        <xs:element type="xs:byte" name="CurrencyMarket"/>
+        <xs:element type="xs:date" name="OpeningDate"/>
+        <xs:element type="xs:string" name="AccountOfficer"/>
+        <xs:element type="xs:dateTime" name="LastUpdate"/>
+        <xs:element name="Balance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:int" name="OnlineActualBal"/>
+              <xs:element type="xs:int" name="OnlineClearedBal"/>
+              <xs:element type="xs:int" name="WorkingBalance"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="Passbook"/>
+        <xs:element name="gValueDate">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="mValueDate" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:date" name="ValueDate"/>
+                    <xs:element type="xs:float" name="CreditMovement"/>
+                    <xs:element type="xs:int" name="ValueDatedBal"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="ChargeCcy"/>
+        <xs:element type="xs:string" name="InterestCcy"/>
+        <xs:element type="xs:string" name="AllowNetting"/>
+        <xs:element name="gInputter">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="Inputter"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Holdings">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Position" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Symbol"/>
+                    <xs:element type="xs:string" name="Name"/>
+                    <xs:element type="xs:string" name="Type"/>
+                    <xs:element type="xs:float" name="Quantity"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:long" name="id"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

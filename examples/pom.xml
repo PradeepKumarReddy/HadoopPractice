@@ -26,6 +26,7 @@
 		<spark.version>1.1.0</spark.version>
 		<sqoop.version>1.4.5</sqoop.version>
 		<zookeeper.version>3.4.6</zookeeper.version>
+		<flume.version>1.5.0-cdh5.3.0</flume.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -63,6 +64,19 @@
 			<artifactId>hbase-server</artifactId>
 			<version>${hbase.version}</version>
 		</dependency>
+		<!-- Hadoop Dependencies -->
+		<dependency>
+			<groupId>org.apache.flume</groupId>
+			<artifactId>flume-ng-core</artifactId>
+			<version>${flume.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flume</groupId>
+			<artifactId>flume-ng-sdk</artifactId>
+			<version>${flume.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<!-- <repositories> <repository> <id>mavenCentral</id> <url>http://repo1.maven.org/maven2/</url> 
@@ -75,6 +89,18 @@
 				<artifactId>mrunit</artifactId>
 				<version>1.0.0</version>
 				<classifier>hadoop2</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.flume</groupId>
+				<artifactId>flume-ng-core</artifactId>
+				<version>${flume.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.flume</groupId>
+				<artifactId>flume-ng-sdk</artifactId>
+				<version>${flume.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.hadoop</groupId>
@@ -262,6 +288,40 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.nokia.util.avro</groupId>
+				<artifactId>schemagen-plugin</artifactId>
+				<version>0.4-SNAPSHOT</version>
+				<configuration>
+					<outputDirectory>..\sources</outputDirectory>
+					<packageName>my.generated</packageName>
+					<!-- <bindingFiles>
+						<file>resources/binding1.xsd</file>
+					</bindingFiles> -->
+					<schemaFiles>
+						<schema>resources/schema1.xsd</schema>
+					</schemaFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<repositories>
+		<repository>
+			<id>cloudera</id>
+			<url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
 		<artifactId>maven-compiler-plugin</artifactId> <version>3.1</version> <configuration> 

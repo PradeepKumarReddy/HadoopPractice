@@ -20,7 +20,7 @@ public class WordCountMapperTest {
 
 	MapDriver<LongWritable, Text, Text, IntWritable> mapDriver;
 	ReduceDriver<Text, IntWritable, Text, IntWritable> reduceDriver;
-	MapReduceDriver mapReduceDriver;
+	MapReduceDriver<LongWritable, Text, Text, IntWritable, Text, IntWritable> mapReduceDriver;
 	
 	@Before
 	public void setup() {
@@ -60,11 +60,11 @@ public class WordCountMapperTest {
 	@Test
 	 /*when using driver.run() , no need to set withOutput()*/
 	public void testMapReduce() throws IOException {
-		mapReduceDriver.withInput(new LongWritable(), new Text("test mrunit first time. test but .."));
+		mapReduceDriver.withInput(new LongWritable(), new Text("test mrunit first time. test but .. test"));
 		
 		List<Pair<Text, IntWritable>> result = mapReduceDriver.run();
 		
-		Pair<Text, IntWritable> exp = new Pair<Text, IntWritable>(new Text("test"), new IntWritable(2));
+		Pair<Text, IntWritable> exp = new Pair<Text, IntWritable>(new Text("test"), new IntWritable(3));
 		
 		assertTrue(result.contains(exp));
 		
