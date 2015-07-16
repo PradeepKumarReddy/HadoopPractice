@@ -1,0 +1,12 @@
+{
+"name": "Account",
+"type":"record",
+"namespace" : "com.avro.basics",
+"fields" : [
+ {"name" : "name" , "type": "string"},
+{"name" : "category", "type" : "string"},
+{"name" : "accountTitle" , "type" : "string"}
+] 
+
+
+}

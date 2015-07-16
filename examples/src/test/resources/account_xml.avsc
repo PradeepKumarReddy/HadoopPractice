@@ -1,0 +1,27 @@
+{
+  "name" : "AccountEvent",
+  "namespace" : "com.avro.serialization.practice",
+  "type" : "record",
+  "fields" : [ {
+    "name" : "category",
+    "type" : "int",
+    "default" : "0"
+  }, {
+    "name" : "accountTitle",
+    "type" : "string",
+    "default" : ""
+  }, {
+    "name" : "shortTitle",
+    "type" : "string",
+    "default" : ""
+  }, {
+    "name" : "mnemonic",
+    "type" : "string",
+    "default" : ""
+  }, {
+    "name" : "currency",
+    "type" : "string",
+    "default" : ""
+  }
+  ]
+}
