@@ -30,7 +30,6 @@ public class XmlMapperTest {
 
 		for (Pair<Text, NullWritable> pair : result) {
 			System.out.println(pair.getFirst());
-
 		}
 	}
 
